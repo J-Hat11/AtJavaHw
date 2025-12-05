@@ -1,6 +1,8 @@
 import java.util.Scanner;
 
-public class PartB {
+//shecodes.io for reference
+
+public class PartA {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter a String or Phrase: ");
@@ -8,7 +10,7 @@ public class PartB {
         String input = scanner.nextLine().toLowerCase();
         
 
-        String reverse = ""; 
+        String reverse = ""; //declares empty string to store info 
         for (int i = input.length() - 1; i >= 0; i--) {
             reverse += input.charAt(i);
         }
