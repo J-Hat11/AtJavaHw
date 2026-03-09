@@ -29,9 +29,9 @@ public class Die {
             this.value = value;
         }
     }
-    public String toString(){
-        return Integer.toString(value);
-    }
+    //public String toString(){
+     //   return Integer.toString(value);
+  //  }
     public String getASCIIArt(){
         switch(value){
             case 1: 
