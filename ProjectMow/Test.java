@@ -1,4 +1,6 @@
 import java.util.Scanner;
+
+import Mow.Mower;
 import Mow.Yard;
 
 public class Test {
@@ -7,6 +9,14 @@ public class Test {
         System.out.print("\033[H\033[2J");
         System.out.flush();
     }
+  public static void delay(long mseconds) {
+       try {
+           Thread.sleep(mseconds);
+       } catch (InterruptedException e) {
+           System.err.println("InterruptedException received!");
+       }
+   }
+    
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         clearScreen();
@@ -18,9 +28,19 @@ public class Test {
         System.out.println();
 
         Yard yard = new Yard(height, width);
-        yard.printYard();
+        Mower mower = new Mower(1,1,1);
 
-        
+        while (mower.getColumn()< yard.getWidth()){
+clearScreen();
+mower.cut(yard);
+yard.printYard(mower);
+delay(500);
+mower.moveForward();
+        }
+
+        clearScreen();
+        mower.cut(yard);
+        yard.printYard(mower);
 
     }
 

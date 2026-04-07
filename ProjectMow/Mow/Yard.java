@@ -19,15 +19,6 @@ public class Yard {
     }
     
 
-public void printYard(){
-    for(int i =0; i< yard.length; i++){
-        for(int j=0; j<yard[i].length; j++){
-            System.out.print(yard[i][j]);
-        }
-        System.out.println();
-    }
-}
-
 public int getHeight(){
     return yard.length-2;
 }
@@ -42,4 +33,31 @@ public char getCell(int rows, int columns){
 public void setCell(int rows, int columns, char value){
      yard[rows][columns] = value;
 }
+
+
+public void cut(int row, int column) {
+    if (yard[row][column]== '+') {
+        yard[row][column] =' ';
+    }
 }
+
+public void printYard(Mower mower){
+    for (int i =0; i<yard.length; i++){
+        for(int j=0; j<yard[i].length; j++){
+            if(mower !=null && i == mower.getRow()&& j ==mower.getColumn()){
+                switch (mower.getDirection()) {
+                case 0: System.out.print('^'); break;
+                case 1: System.out.print('>'); break;
+                case 2: System.out.print('v'); break;
+                case 3: System.out.print('<'); break;
+            }
+    } else { System.out.print (yard[i][j]);}
+        }
+        System.out.println();
+}
+
+}
+
+
+}
+
