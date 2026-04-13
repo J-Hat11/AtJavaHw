@@ -7,6 +7,7 @@ public class GraphicsTemplate {
      * Change the following method to customize
      * what is drawn in the JFrame.
      */
+    //used internet to help with basketball curves and with new color /arc
     public static void draw(Graphics g) {
        g.setColor(Color.BLACK);
        g.fillRect(0, 0, 400, 400);
