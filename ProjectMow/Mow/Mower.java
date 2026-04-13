@@ -60,6 +60,48 @@ public char surroundings(Yard yard){
 public void cut(Yard yard){
     yard.cut(row, column);
 }
-
-
+public void Randomizer(Yard yard){
+    int height = yard.getHeight();
+    int width = yard.getWidth();
+    int corner = (int)(Math.random()*4);
+    switch(corner){
+        case 0: row = 1; column = 1; break;
+        case 1: row = 1; column = width; break;
+        case 2: row=height; column = 1;
+        case 3:row = height; column = width;
+    }
+    direction = (int)(Math.random()*4);
 }
+public boolean updateMower(Yard yard){
+boolean grassLeftover = false;
+for(int i =0; i<yard.getHeight(); i++){
+    for (int j=0; j<yard.getWidth(); j++){
+        if (yard.getCell(i, j) == '+'){
+            grassLeftover = true;
+        }
+    }
+}
+
+if(!grassLeftover) return false;
+
+if(surroundings(yard) == '+'){
+    moveForward();
+    cut(yard);
+    return true;
+}
+turnLeft();
+if(surroundings(yard) == '+'){
+    moveForward();
+    cut(yard);
+    return true;
+} 
+turnRight();//(2x) because already turned left
+turnRight();
+if(surroundings(yard) == '+'){
+    moveForward();
+    cut(yard);
+    return true;
+}
+return grassLeftover;
+
+}}

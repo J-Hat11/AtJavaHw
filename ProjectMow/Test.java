@@ -29,6 +29,7 @@ public class Test {
 
         Yard yard = new Yard(height, width);
         Mower mower = new Mower(1,1,1);
+        mower.Randomizer(yard);
 
         while (mower.getColumn()< yard.getWidth()){
 clearScreen();
@@ -37,10 +38,21 @@ yard.printYard(mower);
 delay(500);
 mower.moveForward();
         }
+        mower.cut(yard);
+        boolean mowing = true;
+        while(mowing){
+clearScreen();
+mower.cut(yard);
+yard.printYard(mower);
+delay(500);
+mowing = mower.updateMower(yard);
+        }
+
 
         clearScreen();
         mower.cut(yard);
         yard.printYard(mower);
+        System.out.println("Mowing finished");
 
     }
 
