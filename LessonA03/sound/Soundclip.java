@@ -13,12 +13,21 @@ public class Soundclip {
     private File audioFile;
     private AudioInputStream audioIn;
     private Clip clip;
+    private boolean loop;
 
     public Soundclip(String path) {
        filePath = path;
        clip = null;
+       loop = false;
+    
    }
+   public boolean getLoop() {
+        return loop;
+    }
+    public void setLoop(boolean loop){
+        this.loop=loop;
 
+    }
    public void open() {
        try {
            audioFile = new File(filePath);
@@ -43,7 +52,7 @@ public class Soundclip {
    }
 
    public void play() {
-    play();
+    
        if (clip != null) {
            // if the clip is running, stop it before playing it again.
            if (clip.isRunning()) {
@@ -58,9 +67,12 @@ public class Soundclip {
 
            // start at the beginning of the clip
            clip.setFramePosition(0);
-           clip.start();
+           if (loop) {                              
+                clip.loop(Clip.LOOP_CONTINUOUSLY); 
+            } else {                                
+                clip.start(); 
        }
-
+    }
    }
 
    public void play(boolean wait) {
@@ -74,7 +86,12 @@ public class Soundclip {
            }
        }
    }
-
+   
+   public void stop() {
+        if (clip != null) {
+            clip.stop();
+        }
+    }
    public void close() {
        if (clip != null) {
            clip.stop();

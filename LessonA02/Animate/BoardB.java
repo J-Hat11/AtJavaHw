@@ -11,7 +11,7 @@ import javax.swing.Timer;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-
+//used the internet to help with animation because my original program was not running correctly
 public class BoardB extends JPanel implements ActionListener {
   
 private final int B_WIDTH = 720;
@@ -63,6 +63,6 @@ public void actionPerformed(ActionEvent e) {
     angle += 5;
     if (x > B_WIDTH)  x = 0;
     if (y > B_HEIGHT) y = 0;
-    repaint();
+    repaint(); //calls paint component again
 }
 }
