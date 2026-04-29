@@ -1,12 +1,13 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 public class BlackJackgame {
+    //consulted classmates and used ai to help debug program specifcally regarding nested loops
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         boolean playAgain = true;
 
         while (playAgain) {
-            // Initialize hands and scores
+            
             ArrayList<Card> playerHand = new ArrayList<>();
             ArrayList<Card> dealerHand = new ArrayList<>();
             int playerScore = 0;
@@ -18,15 +19,15 @@ public class BlackJackgame {
             dealerHand.add(new Card());
             dealerHand.add(new Card());
 
-            // Calculate initial scores
+        
             playerScore = calculateScore(playerHand);
             dealerScore = calculateScore(dealerHand);
 
-            // Show initial hands (used internet here for help with formatting)
+      
             System.out.println("Your hand: " + handToString(playerHand) + " (Score: " + playerScore + ")");
             System.out.println("Dealer's hand: " + dealerHand.get(0).getFace() + " [Hidden]");
 
-            // Check for initial blackjack
+
             if (playerScore == 21 && dealerScore == 21) {
                 System.out.println("Both you and the dealer have blackjack! It's a draw.");
                 continue;
@@ -38,7 +39,7 @@ public class BlackJackgame {
                 continue;
             }
 
-            // Player's turn
+         
             boolean playerTurn = true;
             while (playerTurn) {
                 System.out.print("Do you want to hit or stand? (h/s): ");
@@ -58,7 +59,7 @@ public class BlackJackgame {
                 }
             }
 
-            // Dealer's turn
+
             if (playerScore <= 21) {
                 System.out.println("Dealer's hand: " + handToString(dealerHand) + " (Score: " + dealerScore + ")");
                 while (dealerScore < 17) {
@@ -77,7 +78,7 @@ public class BlackJackgame {
                 }
             }
 
-            // Ask to play again
+          
             System.out.print("Do you want to play another hand? (y/n): ");
             String playAgainChoice = scanner.nextLine().toLowerCase();
             playAgain = playAgainChoice.equals("y");
@@ -108,9 +109,8 @@ public class BlackJackgame {
             }
         }
 
-        // Adjust for aces if score is over 21
         while (score > 21 && aceCount > 0) {
-            score -= 10; // Convert an ace from 11 to 1
+            score -= 10; 
             aceCount--;
         }
 
