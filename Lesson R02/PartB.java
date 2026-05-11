@@ -5,7 +5,7 @@ public class PartB {
                 for (int i = 0; i < pldrm.length() / 2; i++) {
 if (pldrm.charAt(0)!= pldrm.charAt(pldrm.length() - 1)){
             return false;
-}
+} 
 }
 return true;
 }
